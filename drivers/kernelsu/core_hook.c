@@ -166,7 +166,7 @@ static void ksu_sys_umount(const char *mnt, int flags)
 #else
 	long ret = sys_umount(usermnt, flags); // cuz asmlinkage long sys##name
 	set_fs(old_fs);
-	pr_info("sys_umount: %s code: %ld \n", mnt, ret);
+	pr_info("sys_umount: %s code: %d \n", mnt, ret);
 #endif
 	return;
 }
