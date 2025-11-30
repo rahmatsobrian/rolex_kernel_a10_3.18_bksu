@@ -328,7 +328,7 @@ LSM_HANDLER_TYPE ksu_bprm_check(struct linux_binprm *bprm)
 
 // dummy
 #ifndef CONFIG_KSU_LSM_SECURITY_HOOKS
-int ksu_key_permission(struct key *key, const struct cred *cred,
+int ksu_key_permission(key_ref_t key_ref, const struct cred *cred,
 			      unsigned perm)
 {
 	return 0;
