@@ -61,5 +61,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: image-gz-dtb
-          path: out/arch/arm64/boot/Image-gz.dtb
+          path: out/arch/arm64/boot/Image.gz-dtb
         if: always()
