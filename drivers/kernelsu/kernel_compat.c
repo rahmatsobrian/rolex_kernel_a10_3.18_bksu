@@ -54,7 +54,7 @@ void ksu_grab_init_session_keyring(const char *filename)
 	// and now we are sure that this is the key we want
 	// up to 5.1, struct key __rcu *session_keyring; /* keyring inherited over fork */
 	// so we need to grab this using rcu_dereference
-	struct key *keyring = rcu_dereference(current->cred->session_keyring);
+	struct key *keyring = NULL;
 	if (!keyring)
 		return;
 
@@ -75,10 +75,9 @@ struct file *ksu_filp_open_compat(const char *filename, int flags, umode_t mode)
 #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 2, 0)
 	// normally we only put this on ((current->flags & PF_WQ_WORKER) || (current->flags & PF_KTHREAD))
 	// but in the grand scale of things, this does NOT matter.
-	if (init_session_keyring != NULL && !current_cred()->session_keyring) {
-		// pr_info("installing init session keyring for older kernel\n");
-		install_session_keyring(init_session_keyring);
-	}
+	if (init_session_keyring != NULL) {
+    // skip untuk kernel tua
+}
 #endif
 	struct file *fp = filp_open(filename, flags, mode);
 	return fp;
