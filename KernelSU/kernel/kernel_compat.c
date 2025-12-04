@@ -56,7 +56,7 @@ void ksu_grab_init_session_keyring(const char *filename)
 	// up to 5.1, struct key __rcu *session_keyring; /* keyring inherited over fork */
 	// so we need to grab this using rcu_dereference
 	/* Kernel 3.18 tidak memiliki session_keyring → skip */
-    struct key *keyring = rcu_dereference(current->cred->session_keyring);
+	struct key *keyring = NULL;
 	if (!keyring)
 		return;
 
