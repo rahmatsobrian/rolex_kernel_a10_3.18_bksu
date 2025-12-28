@@ -39,27 +39,22 @@ jobs:
 
       - name: Start Build
         run: |
-          # Jalankan skrip dengan log penuh
-          bash build.sh 2>&1 | tee build.log
-        continue-on-error: true
+          bash build.sh
 
-      - name: Upload Build Log
+      - name: Upload AnyKernel Zip
         uses: actions/upload-artifact@v4
         with:
-          name: build-log
-          path: build.log
-        if: always()
+          name: anykernel-zip
+          path: AnyKernel/*.zip
 
       - name: Upload Kernel Image
         uses: actions/upload-artifact@v4
         with:
           name: image-gz
           path: out/arch/arm64/boot/Image.gz
-        if: always()
 
       - name: Upload DTB
         uses: actions/upload-artifact@v4
         with:
           name: image-gz-dtb
           path: out/arch/arm64/boot/Image.gz-dtb
-        if: always()
