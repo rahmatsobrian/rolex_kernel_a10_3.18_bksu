@@ -52,7 +52,7 @@ clone_anykernel() {
 get_toolchain_info() {
     if [ -x "${TC64}gcc" ]; then
         if ${TC64}gcc --version | grep -qi prerelease; then
-            TC_INFO="GCC 4.9 Prebuilt"
+            TC_INFO="GCC 4.9 Prerelease"
         else
             TC_INFO="GCC 4.9.x"
         fi
